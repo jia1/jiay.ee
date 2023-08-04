@@ -6,7 +6,7 @@ import (
 	"os"
 )
 
-func RedisClient() {
+func RedisClient() *redis.Client {
 	godotenv.Load()
 	url := os.Getenv("REDIS_URL")
 	opts, err := redis.ParseURL(url)
@@ -14,5 +14,5 @@ func RedisClient() {
 		panic(err)
 	}
 	rdb := redis.NewClient(opts)
-	// TODO: Fix issue
+	return rdb
 }
